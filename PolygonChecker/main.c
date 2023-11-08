@@ -22,8 +22,10 @@ int main() {
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			//printf_s("! %d\n", triangleSidesPtr[0]);
 			char* triangle = isTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf_s("\n%s\n", triangle);
-
+			//printf_s("\n%s\n", triangle);
+			
+			char* angleResult = calculateTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2], triangle);
+			printf_s("\n%s\n", angleResult);
 			break;
 		case 0:
 			continueProgram = false;
