@@ -6,12 +6,12 @@
 #include<string.h>
 #include <stdlib.h>
 
-//#define M_PI 3.14159265358979323846
 
 
+//to calculate triangle angles
 char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle) {
 
-    //char* answer = triangle;
+   
     char* angleResult = "";
     if (strcmp(triangle, "The three sides make a valid triangle") == 0) {
         double alpha_rad = acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3));
@@ -24,11 +24,10 @@ char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle) {
 
         printf("These side lengths form a triangle with angles: %.2lf, %.2lf, %.2lf (degrees)\n", alpha_deg, beta_deg, gamma_deg);
     }
-    else if(strcmp(triangle, "The three sides do not make a valid triangle") == 0) {
+    else 
+    {
         printf("The three sides do not make a valid triangle\nCould not form angles from a non-existant triangle.\n");
     }
-    else {
-        printf("ERROR: strncpy error\n");
-    }
+    
     return angleResult;
 }

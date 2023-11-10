@@ -29,12 +29,12 @@ char* isTriangle(int side1, int side2, int side3) {
 			//return result;
 		}
 	}
-	else if(side1 + side2 < side3 && side2 + side3 < side1 && side1 + side3 < side2){
+	else /*if(side1 + side2 < side3 && side2 + side3 < side1 && side1 + side3 < side2)*/{
 		triangle = "The three sides do not make a valid triangle";
 	}
-	else {
-		triangle = "The three sides do not make a valid triangle";
+	//else {
+	//	triangle = "The three sides do not make a valid triangle";
 
-	}
+	//}
 	return triangle;
 }
