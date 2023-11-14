@@ -58,7 +58,10 @@ int main() {
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			char* triangle = isTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			//printf("\n\n\n\n\n%s\n\n\n\n", triangle);
 			
+			/*char* result1 = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
+			printf("****%s******", result1);*/
 			
 			char* angleResult = calculateTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2], triangle);
 			printf_s("\n%s\n", angleResult);

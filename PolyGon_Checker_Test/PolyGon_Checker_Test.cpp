@@ -10,6 +10,10 @@ extern "C" double calculatePerimeter(Point lines[4]);
 extern "C" double calculateArea(Point lines[4]);
 extern "C" void connectCorners(Point corners[4], Point lines[4]);
 
+extern "C" char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle);
+extern "C" char* isTriangle(int side1, int side2, int side3);
+extern "C" char* analyzeTriangle(int side1, int side2, int side3);
+
 using namespace Microsoft::VisualStudio::CppUnitTestFramework;
 
 namespace PolyGonCheckerTest
@@ -128,6 +132,146 @@ namespace PolyGonCheckerTest
 		
 
 
+		};
+		TEST_CLASS(TriangleValidation) 
+		{
+		public:
+			TEST_METHOD(InvaildTriangle)
+			{
+				char* result = isTriangle(100, 1, 12);
+				Assert::AreEqual("The three sides do not make a valid triangle", result);
+
+			}
+			TEST_METHOD(InvaildTriangle2)
+			{
+				char* result = isTriangle(13, 1, 1000);
+				Assert::AreEqual("The three sides do not make a valid triangle", result);
+
+			}
+			TEST_METHOD(InvaildTriangle3)
+			{
+				char* result = isTriangle(1000, 0, 0);
+				Assert::AreEqual("The three sides do not make a valid triangle", result);
+
+			}
+			TEST_METHOD(InvaildTriangle4)
+			{
+				char* result = isTriangle(0, 0, 0);
+				Assert::AreEqual("The three sides do not make a valid triangle", result);
+
+			}
+			TEST_METHOD(InvaildTriangle5)
+			{
+				char* result = isTriangle(1, 0, 1);
+				Assert::AreEqual("The three sides do not make a valid triangle", result);
+
+			}
+			TEST_METHOD(VaildTriangle)
+			{
+				char* result = isTriangle(1, 1, 1);
+				Assert::AreEqual("The three sides make a valid triangle", result);
+
+			}
+			TEST_METHOD(VaildTriangle2)
+			{
+				char* result = isTriangle(1, 1, 1);
+				Assert::AreEqual("The three sides make a valid triangle", result);
+
+			}
+			TEST_METHOD(VaildTriangle3)
+			{
+				char* result = isTriangle(4, 5, 3);
+				Assert::AreEqual("The three sides make a valid triangle", result);
+
+			}
+			TEST_METHOD(VaildTriangle4)
+			{
+				char* result = isTriangle(2, 2, 3);
+				Assert::AreEqual("The three sides make a valid triangle", result);
+
+			}
+			TEST_METHOD(VaildTriangle5)
+			{
+				char* result = isTriangle(200, 200, 200);
+				Assert::AreEqual("The three sides make a valid triangle", result);
+
+			}
+			
+		};
+		TEST_CLASS(TypeOfTriangle) {
+		public:
+			TEST_METHOD(EquilateralTest1)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(4, 4, 4);
+				Assert::AreEqual("Type: Equilateral triangle", result1);
+			}
+			TEST_METHOD(EquilateralTest2)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(10000, 10000, 10000);
+				Assert::AreEqual("Type: Equilateral triangle", result1);
+			}
+			TEST_METHOD(EquilateralTest3)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(90, 90, 90);
+				Assert::AreEqual("Type: Equilateral triangle", result1);
+			}
+			TEST_METHOD(IsoscelesTest1)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(2, 2, 3);
+				Assert::AreEqual("Type: Isosceles triangle", result1);
+			}
+			TEST_METHOD(IsoscelesTest2)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(2, 3, 2);
+				Assert::AreEqual("Type: Isosceles triangle", result1);
+			}
+			TEST_METHOD(IsoscelesTest3)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(3, 2, 2);
+				Assert::AreEqual("Type: Isosceles triangle", result1);
+			}
+			TEST_METHOD(ScaleneTest1)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(5, 3, 4);
+				Assert::AreEqual("Type: Scalene triangle", result1);
+			}
+			TEST_METHOD(ScaleneTest2)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(5, 4, 3);
+				Assert::AreEqual("Type: Scalene triangle", result1);
+			}
+			TEST_METHOD(ScaleneTest3)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(3, 4, 5);
+				Assert::AreEqual("Type: Scalene triangle", result1);
+			}
+			TEST_METHOD(NegativeSideLengths1)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(-900, -90, -9);
+				Assert::AreEqual("Not a triangle", result1);
+			}
+			TEST_METHOD(NegativeSideLengths2)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(0, 0, 0);
+				Assert::AreEqual("Not a triangle", result1);
+			}
+			TEST_METHOD(NegativeSideLengths3)
+			{
+				//char* triangle = "The three sides make a valid triangle";
+				char* result1 = analyzeTriangle(-1, 0, 1);
+				Assert::AreEqual("Not a triangle", result1);
+			}
 		};
 	}
 	
