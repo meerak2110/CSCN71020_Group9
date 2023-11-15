@@ -15,8 +15,10 @@ int main() {
 
 		int shapeChoice = printShapeMenu();
 		Point points[4];
+
 		switch (shapeChoice)
 		{
+//for rectangle
 		case 2:
 			printf("Enter the coordinates of four points to check if they form a rectangle.\n");
 			
@@ -53,19 +55,19 @@ int main() {
 				printf("The given points do not form a rectangle.\n");
 			}
 			break;
+
+			//for triangle
 		case 1:
 			printf_s("Triangle selected.\n");
 			int triangleSides[3] = { 0, 0, 0 };
 			int* triangleSidesPtr = getTriangleSides(triangleSides);
 			char* triangle = isTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			//printf("\n\n\n\n\n%s\n\n\n\n", triangle);
-			
-			/*char* result1 = analyzeTriangle(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2]);
-			printf("****%s******", result1);*/
 			
 			char* angleResult = calculateTriangleAngles(triangleSidesPtr[0], triangleSidesPtr[1], triangleSidesPtr[2], triangle);
 			printf_s("\n%s\n", angleResult);
 			break;
+
+			//to exit the program
 		case 0:
 			printf("________________\n");
 			printf("|Exiting Program|");

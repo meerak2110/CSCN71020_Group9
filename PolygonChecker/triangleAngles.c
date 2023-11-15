@@ -1,5 +1,6 @@
-#include<stdio.h>
+#define _CRT_SECURE_NO_WARNINGS
 #define _USE_MATH_DEFINES
+#include<stdio.h>
 #include<math.h>
 #include"triangleSolver.h"
 #include"main.h"
@@ -7,12 +8,9 @@
 #include <stdlib.h>
 
 
-
-//to calculate triangle angles
+//this function calculates the angles in the triangle only if the inputs make a valid triangle
 char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle) {
-
-   
-    char* angleResult = "";
+    char* result = (char*)malloc(256);
     if (strcmp(triangle, "The three sides make a valid triangle") == 0) {
         double alpha_rad = acos((side2 * side2 + side3 * side3 - side1 * side1) / (2.0 * side2 * side3));
         double beta_rad = acos((side3 * side3 + side1 * side1 - side2 * side2) / (2.0 * side3 * side1));
@@ -22,12 +20,12 @@ char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle) {
         double beta_deg = beta_rad * 180.0 / M_PI;
         double gamma_deg = gamma_rad * 180.0 / M_PI;
 
-        printf("These side lengths form a triangle with angles: %.2lf, %.2lf, %.2lf (degrees)\n", alpha_deg, beta_deg, gamma_deg);
+        sprintf(result, "These side lengths form a triangle with angles: %.2lf, %.2lf, %.2lf (degrees)", alpha_deg, beta_deg, gamma_deg);
     }
-    else 
-    {
-        printf("The three sides do not make a valid triangle\nCould not form angles from a non-existant triangle.\n");
+    else {
+        sprintf(result, "The three sides do not make a valid triangle\nCould not form angles from a non-existent triangle.");
     }
-    
-    return angleResult;
+
+    return result;
 }
+

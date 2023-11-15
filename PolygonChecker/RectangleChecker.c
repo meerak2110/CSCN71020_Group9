@@ -6,6 +6,7 @@ typedef struct {
     double y;
 } Point;
 
+//calculate Distance between two points
 double calculateDistance(Point p1, Point p2) {
     return sqrt(pow(p2.x - p1.x, 2) + pow(p2.y - p1.y, 2));
 }
@@ -26,6 +27,7 @@ int isRectangle(Point lines[4]) {
     return 1;
 }
 
+//calculates Perimeter
 double calculatePerimeter(Point lines[4]) {
     double perimeter = 0.0;
     for (int i = 0; i < 4; ++i) {
@@ -34,6 +36,7 @@ double calculatePerimeter(Point lines[4]) {
     return perimeter;
 }
 
+//calculate Area
 double calculateArea(Point lines[4]) {
     double side1 = calculateDistance(lines[0], lines[1]);
     double side2 = calculateDistance(lines[1], lines[2]);
