@@ -8,7 +8,7 @@ extern "C" double calculateDistance(Point p1, Point p2);
 extern "C" int isRectangle(Point lines[4]);
 extern "C" double calculatePerimeter(Point lines[4]);
 extern "C" double calculateArea(Point lines[4]);
-extern "C" void connectCorners(Point corners[4], Point lines[4]);
+extern "C" void connectCorners(Point points[4], Point corners[4]);
 
 extern "C" char* calculateTriangleAngles(int side1, int side2, int side3, char* triangle);
 extern "C" char* isTriangle(int side1, int side2, int side3);
@@ -129,10 +129,42 @@ namespace PolyGonCheckerTest
 			Point lines[4] = { {0, 4}, {5, 4}, {2, 0}, {-3,0 } };
 			double Area = calculateArea(lines);
 			Assert::AreEqual(25.0, Area);
-		}
+		}	
 		
+	  		TEST_METHOD(Connect_Corners_Test1) {
+			Point points[4] = { {1, 2}, {3, 4}, {5, 6}, {7, 8} };
+			Point expectedCorners[4] = { {1, 2}, {3, 4}, {7, 8}, {5, 6} };
 
+			connectCorners(points, expectedCorners);
 
+			for (int i = 0; i < 4; ++i) {
+				Assert::IsFalse(points == expectedCorners);
+				
+			}
+		}
+			TEST_METHOD(Connect_Corners_Test2) {
+				Point points[4] = { {0, 0}, {0, 1}, {1, 1}, {1, 0} };
+				Point expectedCorners[4] = { {0, 0}, {1, 1}, {1,0}, {1, 1} };
+
+				connectCorners(points, expectedCorners);
+
+				for (int i = 0; i < 4; ++i) {
+					Assert::IsFalse(points == expectedCorners);
+
+				}
+			}
+			TEST_METHOD(Connect_Corners_Test3) {
+				Point points[4] = { {1, 4}, {4, 4}, {4, 2}, {1, 2} };
+				Point expectedCorners[4] = { {1, 4}, {4, 4}, {1, 2}, {4, 2} };
+
+				connectCorners(points, expectedCorners);
+
+				for (int i = 0; i < 4; ++i) {
+					Assert::IsFalse(points == expectedCorners);
+
+				}
+			}
+		
 		};
 		TEST_CLASS(TriangleValidation) //this class is testing the validity of the triangles function
 		{
