@@ -130,7 +130,12 @@ namespace PolyGonCheckerTest
 			double Area = calculateArea(lines);
 			Assert::AreEqual(25.0, Area);
 		}	
-		
+		TEST_METHOD(Area_Test5) {
+			Point lines[4] = { {0, 4}, {5, 4}, {2, 0}, {-3,0 } };
+			double Area = calculateArea(lines);
+			Assert::AreEqual(25.0, Area);
+		}
+		//testing the functionality connect corners
 	  		TEST_METHOD(Connect_Corners_Test1) {
 			Point points[4] = { {1, 2}, {3, 4}, {5, 6}, {7, 8} };
 			Point expectedCorners[4] = { {1, 2}, {3, 4}, {7, 8}, {5, 6} };
@@ -156,6 +161,28 @@ namespace PolyGonCheckerTest
 			TEST_METHOD(Connect_Corners_Test3) {
 				Point points[4] = { {1, 4}, {4, 4}, {4, 2}, {1, 2} };
 				Point expectedCorners[4] = { {1, 4}, {4, 4}, {1, 2}, {4, 2} };
+
+				connectCorners(points, expectedCorners);
+
+				for (int i = 0; i < 4; ++i) {
+					Assert::IsFalse(points == expectedCorners);
+
+				}
+			}
+			TEST_METHOD(Connect_Corners_Test4) {
+				Point points[4] = { {0, 0}, {-7, 0}, {-7, -4}, {0, -4} };
+				Point expectedCorners[4] = { {0, 0}, {-7,0}, {0, -4}, {-7, -4} };
+
+				connectCorners(points, expectedCorners);
+
+				for (int i = 0; i < 4; ++i) {
+					Assert::IsFalse(points == expectedCorners);
+
+				}
+			}
+			TEST_METHOD(Connect_Corners_Test5) {
+				Point points[4] = { {0, 4}, {5, 4}, {2, 0}, {-3,0 } };
+				Point expectedCorners[4] = { {0, 4}, {5, 4}, {-3, 0}, {2, 0} };
 
 				connectCorners(points, expectedCorners);
 
